@@ -1,4 +1,8 @@
-# Astro Starter Kit: Basics
+## Dictionary
+
+- [Live site here](https://master--voluble-brigadeiros-cff4a2.netlify.app/)
+
+## Astro Starter Kit: Basics
 
 ```sh
 npm create astro@latest -- --template basics
