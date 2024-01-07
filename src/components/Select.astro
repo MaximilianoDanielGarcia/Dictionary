@@ -1,0 +1,146 @@
+<div class="select" data-state="closed">
+    <p id="option-selected"></p>
+    <img src="/assets/images/icon-arrow-down.svg" alt="">
+    
+    <ul class="options">
+        <li data-value="sans-serif">Sans Serif</li>
+        <li data-value="serif">Serif</li>
+        <li data-value="mono">Mono</li>
+    </ul>
+    
+</div>
+
+<style>
+    .select {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 120px;
+        height: 24px;
+        position: relative;
+        cursor: pointer;
+        
+        & > p {
+            color: var(--color);
+            font-family: var(--font-family);
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 24px;
+        }
+    }
+
+    .select[data-state="closed"] .options {
+        max-height: 0px;
+        overflow: hidden;
+        padding: 0 24px;
+    }
+
+    .select[data-state="opened"] .options {
+        max-height: 183px;
+        padding: 24px;
+    }
+
+    .select[data-state="opened"] > img {
+        transform: rotateX(180deg);
+    }
+
+    .options {
+        position: absolute;
+        top: 42px;
+        right: 0px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 183px;
+        height: 152px;
+        list-style: none;
+        background: var(--bg-color-modal);
+        color: var(--color);
+        font-family: var(--font-family);
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 24px;
+        border-radius: 16px;
+        box-shadow: 0px 5px 30px var(--accent);
+        cursor: default;
+        transition: all .4s ease;
+    }
+
+    .options > li {
+        cursor: pointer;
+    }
+
+    .options > li[data-value="sans-serif"] {
+        font-family: 'Inter', sans-serif;
+    }
+
+    .options > li[data-value="serif"] {
+        font-family: 'Lora', serif;
+    }
+
+    .options > li[data-value="mono"] {
+        font-family: 'Inconsolata', monospace;
+    }
+
+    .options > li:hover {
+        color: var(--violet);
+    }
+
+    @media screen and (width <= 540px) {
+        .select {
+            width: 98px;
+            
+            & > p {
+                font-size: 14px;
+            }
+        }
+
+        .options {
+            gap: 14px;
+            width: 143px;
+            height: 152px;
+            font-size: 14px;
+        }
+    }
+</style>
+<script>
+    const root = document.querySelector(':root') as HTMLElement;
+
+    const select = document.querySelector('.select');
+    const optionSelected = document.getElementById('option-selected');
+    const options = select.querySelectorAll('.options > li');
+
+    options.forEach((option) => {
+        option.addEventListener('click', () => {
+            const selectedValue = option.getAttribute('data-value');
+
+            if(selectedValue === "sans-serif"){
+                root.style.setProperty('--font-family', "'Inter', sans-serif");
+                optionSelected.innerText = "Sans Serif";
+            }
+            else if (selectedValue === "serif"){
+                root.style.setProperty('--font-family', "'Lora', serif");
+                optionSelected.innerText = "Serif";
+            }
+            else if (selectedValue === "mono"){
+                root.style.setProperty('--font-family', "'Inconsolata', monospace");
+                optionSelected.innerText = "Mono";
+            }
+            
+            localStorage.setItem('font-family', root.style.getPropertyValue('--font-family'));
+            
+        });
+    });
+
+    const toggle = () => {
+        const state = select.getAttribute('data-state');
+        if (state === 'closed'){
+            select.setAttribute('data-state', 'opened');
+        }
+        else {
+            select.setAttribute('data-state', 'closed');
+        }
+    }
+
+    select.addEventListener('click', toggle);
+</script>

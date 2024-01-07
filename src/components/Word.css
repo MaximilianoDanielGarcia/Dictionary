@@ -1,0 +1,169 @@
+
+.word-intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 52%;
+    min-width: 737px;
+    height: 114px;
+    margin-top: 45px;
+}
+
+.word-and-phonetic {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 100%;
+
+    & > h2 {
+        font-family: var(--font-family);
+        font-size: 64px;
+        font-weight: 700;
+    }
+}
+
+.phonetic {
+    color: var(--violet);
+    font-family: var(--font-family);
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.play-button {
+    width: 75px;
+    height: 75px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    & > svg {
+        border-radius: 50%;
+    }
+
+    & > svg * {
+        transition: all .2s ease;
+    }
+}
+
+.play-button:hover > svg {
+
+    & circle {
+        opacity: 1;   
+    }
+
+    & path {
+        fill: var(--white);
+    }
+}
+
+.play-button:active > svg {
+
+    & circle {
+        opacity: 1;
+        fill: hsla(274, 82%, 30%, 1);
+    }
+}
+
+.meanings-container {
+    width: 52%;
+    min-width: 736px;
+    margin-top: 39px;
+}
+
+.loader-container {
+    height: 204px;
+    margin-top: 132px;
+}
+
+.line-h {
+    height: 1px;
+    width: 100%;
+    background: var(--line-color);
+}
+
+.meanings-source {
+    display: flex;
+    gap: 20px;
+    padding-top: 20px;
+    margin-bottom: 124px;
+    border-top: 1px solid var(--line-color);
+
+    & > h4 {
+        color: var(--gray);
+        font-family: var(--font-family);
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    & > div {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+    }
+
+    & > div > a {
+        color: var(--color);
+        font-family: var(--font-family);
+        font-size: 14px;
+        font-weight: 400;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    & > div > a:hover {
+        text-decoration: underline;
+    }
+}
+
+@media screen and (width <= 810px) {
+    .word-intro {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .meanings-container {
+        width: 100%;
+        min-width: 100%;
+    }
+}
+
+@media screen and (width <= 540px) {
+    
+    .word-intro {
+        height: 68px;
+        margin-top: 24px;
+    }
+
+    .word-and-phonetic {
+        & > h2 {
+            font-size: 32px;
+        }
+    }
+
+    .phonetic {
+        font-size: 18px;
+    }
+
+    .play-button {
+        width: 48px;
+        height: 48px;
+    
+        & > svg {
+            width: 48px;
+            height: 48px;
+        }
+    }
+
+    .meanings-container {
+        margin-top: 29px;
+    }
+
+    .meanings-source {
+        gap: 16px;
+        margin-bottom: 85px;
+    
+        & > div > a {
+            font-size: 12px;
+        }
+    }
+}

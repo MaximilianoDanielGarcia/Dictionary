@@ -1,0 +1,90 @@
+.meaning-type {
+    width: 100%;
+}
+
+.meaning-header {
+    display: flex;
+    align-items: center;
+    height: 31px;
+    gap: 23px;
+
+    & > h3 {
+        color: var(--color);
+        font-family: var(--font-family);
+        font-size: 24px;
+        font-weight: 700;
+        font-style: italic;
+        padding-bottom: 5px;
+    }
+}
+
+.definition-list {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 13px;
+    list-style: disc;
+}
+
+.meaning-subtitle {
+    font-family: var(--font-family);
+    color: var(--gray);
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+.meaning-container {
+    padding-top: 40px;
+    padding-bottom: 24px;
+}
+
+.synonyms-antonyms {
+    display: flex;
+    gap: 22px;
+}
+
+.meaning-synonyms,
+.meaning-antonyms {
+    color: var(--violet);
+    font-family: var(--font-family);
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.meaning-synonyms:hover,
+.meaning-antonyms:hover {
+    color: hsla(274, 82%, 40%, 1);
+}
+
+@media screen and (width <= 540px) {
+    .meaning-header {
+        height: 21px;
+        gap: 16px;
+    
+        & > h3 {
+            font-size: 18px;
+            padding-bottom: 3px;
+        }
+    }
+
+    .meaning-subtitle {
+        font-size: 16px;
+        margin-bottom: 17px;
+    }
+
+    .meaning-container {
+        padding-top: 30px;
+        padding-bottom: 17px;
+    }
+
+    .definition-list {
+        justify-content: start;
+    }
+
+    .meaning-synonyms,
+    .meaning-antonyms {
+        font-size: 16px;
+    }
+}

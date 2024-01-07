@@ -1,0 +1,99 @@
+<div class="dark-mode-container">
+    <label class="switch">
+        <input type="checkbox" name="dark-mode" id="dark-mode" />
+        <span class="slider"></span>
+    </label>
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="22"
+        height="22"
+        viewBox="0 0 22 22"
+        ><path
+            fill="none"
+            stroke="#838383"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+            d="M1 10.449a10.544 10.544 0 0 0 19.993 4.686C11.544 15.135 6.858 10.448 6.858 1A10.545 10.545 0 0 0 1 10.449Z"
+        ></path></svg
+    >
+</div>
+
+<style>
+    .dark-mode-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 80px;
+        height: 20px;
+    }
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 20px;
+
+        & > #dark-mode {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+    }
+
+    .slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 10px;
+        background: var(--gray);
+        transition: all 0.4s ease;
+        cursor: pointer;
+    }
+
+    .slider::before {
+        position: absolute;
+        content: "";
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        top: 3px;
+        left: 3px;
+        background: var(--white);
+        transition: all 0.4s ease;
+    }
+
+    #dark-mode:checked + .slider {
+        background: var(--violet);
+    }
+
+    #dark-mode:checked + .slider::before {
+        transform: translateX(20px);
+    }
+
+    .dark-mode-container:has(.switch > #dark-mode:checked) > svg > path {
+        stroke: var(--violet);
+    }
+
+    @media screen and (width <= 540px) {
+        .dark-mode-container {
+            width: 72px;
+        }
+    }
+</style>
+<script>
+    
+    const body = document.querySelector("body");
+    const inputDarkMode = document.getElementById("dark-mode") as HTMLInputElement;
+
+    inputDarkMode.addEventListener("change", (e) => {
+        if (inputDarkMode.checked) {
+            body.setAttribute("data-theme", "dark");
+        } else {
+            body.removeAttribute("data-theme");
+        }
+    });
+
+</script>
