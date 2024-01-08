@@ -56,16 +56,16 @@ export function Word() {
 
     const findSourceAudio = () => {
 
-        if(data[0].phonetics.find(p => p.audio.indexOf('us.mp3') !== -1)) {
-           return data[0].phonetics.find(p => p.audio.indexOf('us.mp3') !== -1).audio;
+        if(data[0].phonetics.find(p => p.audio.indexOf('-us') !== -1)) {
+           return data[0].phonetics.find(p => p.audio.indexOf('-us') !== -1).audio;
         }
 
-        if(data[0].phonetics.find(p => p.audio.indexOf('uk.mp3') !== -1)) {
-            return data[0].phonetics.find(p => p.audio.indexOf('uk.mp3') !== -1).audio;
+        if(data[0].phonetics.find(p => p.audio.indexOf('-uk') !== -1)) {
+            return data[0].phonetics.find(p => p.audio.indexOf('-uk') !== -1).audio;
          }
 
-         if(data[0].phonetics.find(p => p.audio.indexOf('au.mp3') !== -1)) {
-            return data[0].phonetics.find(p => p.audio.indexOf('au.mp3') !== -1).audio;
+         if(data[0].phonetics.find(p => p.audio.indexOf('-au') !== -1)) {
+            return data[0].phonetics.find(p => p.audio.indexOf('-au') !== -1).audio;
          }
     }
 
